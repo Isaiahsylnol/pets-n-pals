@@ -1,0 +1,48 @@
+
+[
+    {
+        "id": "4",
+        "breed": "Akita",
+        "title": "Akita health",
+        "article": "mock article data",
+        "date_created": "1971-08-01T00:00:00+00:00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet malesuada nibh. Aliquam lobortis quis velit vitae molestie. Cras quis lorem et ex vestibulum faucibus. Proin sit amet arcu mollis, euismod augue a, ultrices mauris. Vestibulum sit amet ipsum consectetur, interdum tellus sit amet, convallis diam. In quis rhoncus nibh. Sed id venenatis arcu. Fusce lobortis libero dolor, quis fringilla justo suscipit molestie. Cras porta consectetur justo non tincidunt. Ut consequat felis nec sem volutpat, nec porta ligula facilisis. Nullam nec risus erat. Aliquam ullamcorper quam ipsum, ac placerat eros accumsan vel. Nam eget magna lorem. Nunc nec fringilla diam. In maximus auctor rutrum.",
+        "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1667000856/articles/healthcare_hzvjq0.jpg"
+    },
+    {
+        "id": "5",
+        "breed": "Any",
+        "title": "Teach Fido the Latest Tricks",
+        "article": "mock article data",
+        "date_created": "2021-08-01T00:00:00+00:00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet malesuada nibh. Aliquam lobortis quis velit vitae molestie. Cras quis lorem et ex vestibulum faucibus. Proin sit amet arcu mollis, euismod augue a, ultrices mauris. Vestibulum sit amet ipsum consectetur, interdum tellus sit amet, convallis diam. In quis rhoncus nibh. Sed id venenatis arcu. Fusce lobortis libero dolor, quis fringilla justo suscipit molestie. Cras porta consectetur justo non tincidunt. Ut consequat felis nec sem volutpat, nec porta ligula facilisis. Nullam nec risus erat. Aliquam ullamcorper quam ipsum, ac placerat eros accumsan vel. Nam eget magna lorem. Nunc nec fringilla diam. In maximus auctor rutrum.",
+        "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1667001511/articles/dog-tricks-1_pggnw6.jpg"
+    },
+    {
+        "id": "6",
+        "breed": "Any",
+        "title": "Best dog walk times",
+        "article": "mock article data",
+        "date_created": "2021-08-01T00:00:00+00:00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet malesuada nibh. Aliquam lobortis quis velit vitae molestie. Cras quis lorem et ex vestibulum faucibus. Proin sit amet arcu mollis, euismod augue a, ultrices mauris. Vestibulum sit amet ipsum consectetur, interdum tellus sit amet, convallis diam. In quis rhoncus nibh. Sed id venenatis arcu. Fusce lobortis libero dolor, quis fringilla justo suscipit molestie. Cras porta consectetur justo non tincidunt. Ut consequat felis nec sem volutpat, nec porta ligula facilisis. Nullam nec risus erat. Aliquam ullamcorper quam ipsum, ac placerat eros accumsan vel. Nam eget magna lorem. Nunc nec fringilla diam. In maximus auctor rutrum.",
+        "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1667000836/articles/dog_running_wxguty.jpg"
+    },
+    {
+        "id": "7",
+        "breed": "Any",
+        "title": "How to Shower Fido",
+        "article": "mock article data",
+        "date_created": "2021-08-01T00:00:00+00:00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet malesuada nibh. Aliquam lobortis quis velit vitae molestie. Cras quis lorem et ex vestibulum faucibus. Proin sit amet arcu mollis, euismod augue a, ultrices mauris. Vestibulum sit amet ipsum consectetur, interdum tellus sit amet, convallis diam. In quis rhoncus nibh. Sed id venenatis arcu. Fusce lobortis libero dolor, quis fringilla justo suscipit molestie. Cras porta consectetur justo non tincidunt. Ut consequat felis nec sem volutpat, nec porta ligula facilisis. Nullam nec risus erat. Aliquam ullamcorper quam ipsum, ac placerat eros accumsan vel. Nam eget magna lorem. Nunc nec fringilla diam. In maximus auctor rutrum.",
+        "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1667000848/articles/toys.png"
+    },
+    {
+        "id": "9",
+        "breed": "Any",
+        "title": "Navigating The Dog Park As A Newcomer",
+        "article": "mock article data",
+        "date_created": "2021-08-01T00:00:00+00:00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet malesuada nibh. Aliquam lobortis quis velit vitae molestie. Cras quis lorem et ex vestibulum faucibus. Proin sit amet arcu mollis, euismod augue a, ultrices mauris. Vestibulum sit amet ipsum consectetur, interdum tellus sit amet, convallis diam. In quis rhoncus nibh. Sed id venenatis arcu. Fusce lobortis libero dolor, quis fringilla justo suscipit molestie. Cras porta consectetur justo non tincidunt. Ut consequat felis nec sem volutpat, nec porta ligula facilisis. Nullam nec risus erat. Aliquam ullamcorper quam ipsum, ac placerat eros accumsan vel. Nam eget magna lorem. Nunc nec fringilla diam. In maximus auctor rutrum.",
+        "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1667000843/articles/dog_park_kfnanm.jpg"
+    }
+]

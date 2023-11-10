@@ -1,0 +1,82 @@
+[
+  {
+    "sku": "160-332",
+    "price": 79,
+    "inventory_quantity": 3,
+    "breed": "Any",
+    "name": "U-Clip Deluxe 16 Piece Pet Clipper Kit",
+    "rating": 4,
+    "description": "Wahl's Deluxe U-Clip® medium duty home grooming kit contains everything you need to complete a professional-style clip from the comfort of your own home! Perfect for touch-ups between groomer visits, the Deluxe U-Clip is great for clipping paws, faces, and finishing touches - even light body clipping! - making clipping at home more convenient and enjoyable than ever before.KIT INCLUDES: U-Clip Corded Clipper, Stainless Steel Scissors, Pet Styling Comb, Seven Attachment Guides, Durable Storage Case, Grooming Apron, Grooming & Styling How To DVD, Blade Guard, Cleaning Brush, Blade Oil, Instructions.",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665408300/wahl_shaver_chogqo.jpg"
+  },
+  {
+    "sku": "206-655",
+    "price": 205,
+    "inventory_quantity": 13,
+    "breed": "Any",
+    "name": "Grey Designer Dog House",
+    "rating": 4,
+    "description": "Features： Overall Dimensions: 34.5 in(L)×30.5 in(W)×32 in(H) Net Weight：21.2pounds Color: blue and white Material:PP ◎Our dog house is made of environmentally friendly PP material, which is durable, sun-proof and waterproof. Perfect for use in the backyard garden, providing a perfect home for your pet. ◎Our plastic dog house provides a comfortable and superior event space, perfect for medium and large size dogs. ◎Smooth surfaces and detachable roof make this outdoor dog house easy to clean. ◎Our large dog house is easy to assemble, instructions are included in the box. According to instructions, an adult can complete the assembly in about half an hour ◎Raised floors and waterproof materials keep the dog house from leaking and protect your pet from rain.",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665408046/dog_house1_ukt09b.jpg"
+  },
+  {
+    "sku": "398-688",
+    "price": 350,
+    "inventory_quantity": 22,
+    "breed": "Weiner",
+    "name": "Weiner health",
+    "rating": 5,
+    "description": "mock description data",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665406982/dog_pills_gwgslt.jpg"
+  },
+  {
+    "sku": "808-898",
+    "price": 14.99,
+    "inventory_quantity": 2,
+    "breed": "Any",
+    "name": "Tangle Remover",
+    "rating": 4,
+    "description": "TropiClean Tangle Remover repels dirt, adds shine and makes brushing a breeze. This ready to use, no-rinse formula quickly penetrates mats and tangles to gently remove knots, reducing brushing time by up to 50%, allowing more time for snuggles. Our new formula delivers a revolutionary way to remove mats, tangles, undercoat, and loose hair from your pets coat. Use the Tangle Remover to cut your brushing time in half, while reviving damaged coats, restoring elasticity and leaving hair with a healthy shine. No Rinse. Brushing Made Easy.",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665408801/tangle_remover_sp7vkx.jpg"
+  },
+  {
+    "sku": "499-022",
+    "price": 299,
+    "inventory_quantity": 52,
+    "breed": "Any",
+    "name": "Premium Dog Leash",
+    "rating": 5,
+    "description": "mock description data",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665406934/tie_cable_paerg7.jpg"
+  },
+  {
+    "sku": "525-661",
+    "price": 400,
+    "inventory_quantity": 39,
+    "breed": "Any",
+    "name": "Jespet Car Travel Dog Booster Seat",
+    "rating": 4,
+    "description": "Help keep your little pup safe, while also providing him with a great window view. JesPet Car Travel Booster Seat is the paw-fect way to keep your dog safe and secure in one spot during your road trips. And since it’s raised, she will be able to see the views and watch the other cars drive by. This booster seat is secured with a standard seat belt and features a security leash, so you can strap your dog in and ensure he doesn’t fall out.",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665406945/car_seat_ttur6o.jpg"
+  },
+  {
+    "sku": "117-675",
+    "price": 500,
+    "inventory_quantity": 80,
+    "breed": "Akita",
+    "name": "Royal Canin Chow Bag",
+    "rating": 4,
+    "description": "The latest advanced formula to preserve Fido's joints and health.",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665406972/royal_canin_french_bulldog_ngtvrp.png"
+  },
+  {
+    "sku": "669-856",
+    "price": 200,
+    "inventory_quantity": 11,
+    "breed": "Any",
+    "name": "Premium Dog House",
+    "rating": 4,
+    "description": "Shelter Fido from the elements in this real wood dog house.",
+    "thumbnail": "https://res.cloudinary.com/djqpqzdkh/image/upload/v1665406961/dog_house_dhdd7t.jpg"
+  }
+]
