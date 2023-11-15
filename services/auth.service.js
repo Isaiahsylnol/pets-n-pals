@@ -1,9 +1,9 @@
 // Authentication service - (LOGIN, LOGOUT, REGISTER)
 
 import axios from "axios";
-const API_URL = "http://localhost:8080/api/users/";
+const API_URL = process.env.NEXT_PUBLIC_BACKEND;
 const register = (username, email, password) => {
-  return axios.post(API_URL + "signup", {
+  return axios.post(API_URL + "/api/users/signup", {
     username,
     email,
     password,
@@ -12,7 +12,7 @@ const register = (username, email, password) => {
 
 const login = (username, password) => {
   return axios
-    .post(API_URL + "signin", {
+    .post(API_URL + "/api/users/signin", {
       username,
       password,
     })

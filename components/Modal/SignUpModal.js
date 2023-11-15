@@ -70,6 +70,7 @@ export default function SignUpModal(props) {
       {/* Close modal button */}
       <div className="float-right justify-center">
         <button
+          ref={close}
           aria-label="Close Modal"
           aria-labelledby="close-modal"
           onClick={props.close}
