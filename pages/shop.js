@@ -3,6 +3,7 @@ import Head from "next/head";
 import Footer from "../components/Footer";
 import Header from "../components/Header.js";
 import ProductCard from "../components/ProductCard";
+import axios from "axios";
 
 export default function Shop() {
   const [cartItems, setCartItems] = useState([]);
@@ -10,35 +11,17 @@ export default function Shop() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND}/products`,
-        {
-          cache: "no-store",
-        }
+      const result = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND}/products`
       );
-      if (response.ok) {
-        const data = await response.json();
-        return data;
-      } else {
-        throw new Error("Failed to fetch products");
-      }
+      setProducts(result.data);
     } catch (error) {
-      console.error("Error fetching products:", error);
-      return [];
+      console.error("Error fetching products: ", error);
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const productsData = await fetchProducts();
-        setProducts(productsData);
-      } catch (error) {
-        console.error("Error setting products:", error);
-      }
-    };
-
-    fetchData();
+    fetchProducts();
   }, []);
 
   useEffect(() => {

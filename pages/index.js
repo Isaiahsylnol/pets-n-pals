@@ -27,7 +27,9 @@ const Home = () => {
   }, [dispatch]);
 
   const fetchProducts = async () => {
-    const result = await axios(`${process.env.NEXT_PUBLIC_BACKEND}/products`);
+    const result = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND}/products`
+    );
     setProducts(result.data.data);
   };
 
@@ -63,7 +65,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header countCartItems={cartItems.length} />
-      <main className="min-h-screen">
+      <main className="min-h-screen sm:p-8">
         {/* Shop items - Flex Grid */}
         <div>
           {/* News Feed */}
