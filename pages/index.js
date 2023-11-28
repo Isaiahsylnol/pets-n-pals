@@ -20,17 +20,19 @@ const Home = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const [newsItems, setItems] = useState();
   const [products, setProducts] = useState([]);
-  let feed = PetService.curatedPetFeed(currentUser?.pets);
+
   const dispatch = useDispatch();
+  let feed = PetService.curatedPetFeed(currentUser?.pets);
+
   const logOut = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
 
   const fetchProducts = async () => {
     const result = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND}/products`
+      `${process.env.NEXT_PUBLIC_BACKEND}/api/product`
     );
-    setProducts(result.data.data);
+    setProducts(result.data);
   };
 
   useEffect(() => {
@@ -54,6 +56,7 @@ const Home = () => {
       EventBus.remove("logout");
     };
   }, [currentUser, logOut]);
+
   return (
     <>
       <Head>
@@ -70,9 +73,7 @@ const Home = () => {
         <div>
           {/* News Feed */}
           <section className="rounded-lg">
-            <h1 className="uppercase text-2xl font-semibold p-3">
-              Latest News
-            </h1>
+            <h1 className="uppercase text-2xl font-bold p-3">Latest News</h1>
             <div className="flex flex-wrap">
               {newsItems?.map((item) => {
                 return (
@@ -88,10 +89,8 @@ const Home = () => {
               })}
             </div>
           </section>
-          <section className="mt-8">
-            <h1 className="uppercase text-2xl font-semibold p-3">
-              New Arrivals
-            </h1>
+          <section>
+            <h1 className="uppercase text-2xl font-bold p-3">New Arrivals</h1>
             <div className="sm:flex">
               <div className="w-full flex justify-center p-4">
                 <div className="justify-center">

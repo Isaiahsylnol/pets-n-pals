@@ -27,8 +27,8 @@ const ProductCard = (props) => {
             className="object-cover object-center w-full h-full"
             src={item?.thumbnail}
             alt="Product thumbnail"
-            width={320}
-            height={300}
+            width={500}
+            height={500}
           />
         ) : null}
 

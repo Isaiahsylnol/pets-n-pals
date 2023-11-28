@@ -12,7 +12,7 @@ export default function Shop() {
   const fetchProducts = async () => {
     try {
       const result = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND}/products`
+        `${process.env.NEXT_PUBLIC_BACKEND}/api/product`
       );
       setProducts(result.data);
     } catch (error) {
@@ -41,8 +41,8 @@ export default function Shop() {
       <Header countCartItems={cartItems?.length} />
       <main className="min-h-screen">
         {/* Shop items - Flex Grid */}
-        <div className="w-fit mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 justify-center mt-10 mb-5">
-          {products?.data?.map((item) => {
+        <div className="w-fit p-5 mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 justify-center mt-10 mb-5">
+          {products?.map((item) => {
             return <ProductCard key={item.sku} item={item} />;
           })}
         </div>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { UserCircleIcon } from "@heroicons/react/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/auth";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Dropdown from "./Dropdown";
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -50,11 +50,6 @@ function Header(props) {
                 <Link href="/subscriptions">Subscriptions</Link>
               </li>
               <div className="grid grid-cols-2 max-w-fit">
-                <li className="flex">
-                  <Link href="/profile">
-                    <UserCircleIcon className="h-7 w-7 text-white hover:text-slate-300" />
-                  </Link>
-                </li>
                 <li className="pr-4 hover:text-slate-300">
                   <Link href="/cart">
                     <svg
@@ -78,6 +73,9 @@ function Header(props) {
                     ) : null}
                   </Link>
                 </li>
+                <li>
+                  <Dropdown />
+                </li>
               </div>
             </ul>
           </div>
@@ -90,6 +88,7 @@ function Header(props) {
             <span className="block h-0.5 w-8 animate-pulse bg-white"></span>
           </div>
         </section>
+        {/* DESKTOP NAV ITEMS */}
         <ul className="DESKTOP-MENU hidden space-x-4 md:flex justify-end">
           <li>
             <Link href="/">Home</Link>
@@ -103,17 +102,8 @@ function Header(props) {
           <li>
             <Link href="/subscriptions">Subscriptions</Link>
           </li>
-          {user ? (
-            <li className="p-1 hover:text-slate-300">
-              <button onClick={handleSignOut}>Sign out</button>
-            </li>
-          ) : null}
-          <li className="flex justify-end">
-            <Link href="/profile">
-              <UserCircleIcon className="h-7 w-7 text-white hover:text-slate-300" />
-            </Link>
-          </li>
-          <li className="pr-4 hover:text-slate-300">
+
+          <li className="hover:text-slate-300">
             <a href="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,6 +125,9 @@ function Header(props) {
                 </div>
               ) : null}
             </a>
+          </li>
+          <li>
+            <Dropdown />
           </li>
         </ul>
       </nav>
