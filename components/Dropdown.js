@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+//import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "../slices/auth";
 import ClickOutsideHandler from "../utils/clickOutside";
 import { useRouter } from "next/router";
@@ -40,7 +40,7 @@ function Dropdown() {
           className="text-gray-200 font-normal no-underline hover:text-white text-base"
           onClick={() => toggleDropdown()}
         >
-          <AccountCircleIcon />
+          Account icon
         </button>
       ) : (
         <a

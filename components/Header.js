@@ -4,7 +4,7 @@ import { logout } from "../slices/auth";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-//import Dropdown from "./Dropdown";
+import Dropdown from "./Dropdown";
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -73,7 +73,7 @@ function Header(props) {
                     ) : null}
                   </Link>
                 </li>
-                <li>{/* <Dropdown /> */}</li>
+                <li>{<Dropdown />}</li>
               </div>
             </ul>
           </div>
@@ -124,7 +124,7 @@ function Header(props) {
               ) : null}
             </a>
           </li>
-          <li>{/* <Dropdown /> */}</li>
+          <li>{<Dropdown />}</li>
         </ul>
       </nav>
       <style>{`
