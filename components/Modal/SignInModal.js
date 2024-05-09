@@ -1,15 +1,18 @@
-import Image from "next/image";
 import Modal from "./Modal";
 import ModalBody from "./ModalBody";
 import ModalHeader from "./ModalHeader";
+
 import React, { useRef } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { login } from "../../slices/auth";
+import { useRouter } from "next/router";
 
 export default function LoginModal(props) {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const initialValues = {
     username: "",
     password: "",
@@ -34,9 +37,7 @@ export default function LoginModal(props) {
       .required("This field is required!"),
   });
 
-  // Referrence to the modal close button
   // programmatically close the modal once
-  // successfully sign in
   const close = useRef(null);
   const closeModal = () => {
     close.current.click();
@@ -49,7 +50,7 @@ export default function LoginModal(props) {
       .then(() => {
         closeModal();
 
-        setSuccessful(true);
+        router.push("/");
       })
       .catch(() => {});
   };
@@ -81,19 +82,11 @@ export default function LoginModal(props) {
         </button>
       </div>
       <ModalHeader>
-        <h1 className="text-center">Sign In</h1>
+        <h1 className="text-2xl">Sign In</h1>
       </ModalHeader>
       <ModalBody>
-        <div className="w-96">
-          <div className="flex flex-col">
-            <Image
-              className="object-contain"
-              alt="Logo Image"
-              width={130}
-              height={130}
-              src={require("/assets/logo2.png")}
-            />
-          </div>
+        <div>
+          <div className="flex flex-col"></div>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

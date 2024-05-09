@@ -24,11 +24,11 @@ const ProductCard = (props) => {
       <div className="text-center sm:text-left">
         {item ? (
           <Image
-            className="object-cover object-center w-full h-full"
+            className="object-cover object-center mx-auto"
             src={item?.thumbnail}
             alt="Product thumbnail"
-            width={500}
-            height={500}
+            width={280}
+            height={280}
           />
         ) : null}
 

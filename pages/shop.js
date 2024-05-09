@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import Header from "../components/Header.js";
+import { useSelector } from "react-redux";
 import ProductCard from "../components/ProductCard";
 import axios from "axios";
+import CartService from "../services/cart.service.js";
 
 export default function Shop() {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
+  const { user: currentUser } = useSelector((state) => state.auth);
 
   const fetchProducts = async () => {
     try {
@@ -22,6 +25,29 @@ export default function Shop() {
 
   useEffect(() => {
     fetchProducts();
+  }, []);
+
+  async function getUserCart() {
+    try {
+      const response = await CartService.fetchCartById(currentUser.id);
+      if (response.status != 200) {
+        throw new Error("Failed to fetch cart: " + response.status);
+      }
+      const data = await response.data;
+      // Successful response
+      console.log("Cart:", data);
+    } catch (error) {
+      console.error("Error fetching cart:", error.message);
+      if (error.message.includes("404")) {
+        console.log("Cart not found");
+      } else {
+        console.error("Unexpected error:", error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    getUserCart();
   }, []);
 
   useEffect(() => {
@@ -41,7 +67,7 @@ export default function Shop() {
       <Header countCartItems={cartItems?.length} />
       <main className="min-h-screen">
         {/* Shop items - Flex Grid */}
-        <div className="w-fit p-5 mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-3 justify-center mt-10 mb-5">
+        <div className="mx-auto max-w-7xl p-8 m-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {products?.map((item) => {
             return <ProductCard key={item.sku} item={item} />;
           })}

@@ -92,13 +92,13 @@ export default function Cart() {
       </Head>
       <Header countCartItems={cartItems?.length} />
       {cartItems?.length ? (
-        <div>
-          <h1 className="mb-4 w-full flex justify-center items-center text-3xl font-bold mt-16">
-            Shopping Bag
+        <div className="mx-auto max-w-7xl">
+          <h1 className="mb-4 w-full flex text-lg uppercase p-8">
+            Shopping Cart
           </h1>
           {/* Layout Container */}
           <div className="h-fit flex flex-col">
-            <div className="max-w-8xl lg:p-12 sm:grid grid-cols-2 gap-x-8 h-screen justify-between">
+            <div className="max-w-8xl lg:p-12 sm:grid md:grid-cols-2 gap-x-8 h-screen">
               {/* Left Grid item - Cart products */}
               <section>
                 <Link href="/shop">
@@ -114,7 +114,11 @@ export default function Cart() {
                   <div key={item.sku} className="p-3">
                     <div className="flex flex-row p-1">
                       {/* Remove product from cart button */}
-                      <button onClick={() => onDelete(item)} className="pr-4">
+                      <button
+                        type="button"
+                        onClick={() => onDelete(item)}
+                        className="pr-4"
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -134,8 +138,8 @@ export default function Cart() {
                         className="object-cover"
                         src={`${item.thumbnail}`}
                         alt="ecommerce thumbnail"
-                        width={233}
-                        height={233}
+                        width={196}
+                        height={196}
                       />
                       <div className="basis-3/4 ml-5">
                         <h2>{item.name}</h2>
@@ -155,7 +159,7 @@ export default function Cart() {
                           </button>
                         </div>
                       </div>
-                      <div className="text-right font-bold">${item.price}</div>
+                      <div className="text-right">${item.price}</div>
                     </div>
                   </div>
                 ))}
@@ -163,36 +167,36 @@ export default function Cart() {
               {/* Right Grid Item - Transaction summary */}
               <section>
                 {/* Transaction details */}
-                <div className="w-full sm:w-4/6 float-right top-0 z-10 sticky h-auto">
+                <div className="w-full md:w-4/6 max-w-lg mx-auto md:float-right top-28 sticky">
                   {/* Card header  */}
                   {cartItems?.length !== 0 && (
                     <div className="p-4">
-                      <div className="border-b-2 w-full border-gray-300 p-3">
+                      <div className="border-b-2 w-full border-gray-300 pb-2">
                         <h1 className="text-lg font-semibold mb-3">Summary</h1>
                       </div>
                       <div className="flex p-1">
                         <span className="w-full">Items Price</span>
-                        <span className="text-right w-full float-right justify-end">
+                        <span className="text-right w-full">
                           {itemPrice ? `$${itemPrice.toFixed(2)}` : null}
                         </span>
                       </div>
                       <div className="flex p-1">
                         <span className="w-full">Tax Price</span>
-                        <span className="text-right w-full float-right justify-end">
+                        <span className="text-right w-full">
                           {itemPrice ? `$${taxPrice.toFixed(2)}` : null}
                         </span>
                       </div>
 
                       <div className="flex p-1">
                         <span className="w-full">Shipping</span>
-                        <span className="text-right w-full float-right justify-end">
+                        <span>
                           {itemPrice ? `$${shippingPrice.toFixed(2)}` : null}
                         </span>
                       </div>
 
                       <div className="flex p-1">
-                        <span className="w-full text-base font-semibold uppercase">
-                          Order Total{" "}
+                        <span className="w-full text-base font-semibold">
+                          Order Total
                         </span>
                         <span className="text-right w-full text-base font-semibold">
                           {totalPrice ? `$${totalPrice.toFixed(2)}` : null}
@@ -212,13 +216,13 @@ export default function Cart() {
                     </div>
                   )}
                 </div>
-              </section>{" "}
+              </section>
             </div>
           </div>
         </div>
       ) : (
         <div className="text-2xl text-center uppercase font-bold h-screen mt-64">
-          YOUR BAG IS CURRENTLY EMPTY.{" "}
+          YOUR BAG IS CURRENTLY EMPTY.
           <Link href="/shop">
             <button className="flex w-52 mx-auto py-2 px-6 mt-8 text-white text-sm bg-orange-700 hover:bg-orange-800 focus:outline-none rounded">
               Continue Shopping
