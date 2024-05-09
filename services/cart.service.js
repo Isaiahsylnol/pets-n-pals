@@ -2,7 +2,7 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/cart/";
 
 const createCart = (userId, status, total, products) => {
-  return axios.post(API_URL + "create-cart", {
+  return axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/api/cart/create-cart`, {
     userId,
     status,
     total,
@@ -11,7 +11,7 @@ const createCart = (userId, status, total, products) => {
 };
 
 const fetchCartById = (userId) => {
-  return axios.post(API_URL + "fetchCart", {
+  return axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/api/cart/fetchCart`, {
     userId,
   });
 };
