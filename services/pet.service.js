@@ -18,14 +18,18 @@ const curatedPetFeed = (pets) => {
 };
 
 const deletePet = async (props) => {
-  return await axios.delete(`http://localhost:8080/api/pets/${props.id}`, {
-    data: props,
-  });
+  return await axios.delete(
+    `${process.env.NEXT_PUBLIC_BACKEND}/api/pets/${props.id}`,
+    {
+      data: props,
+    }
+  );
 };
 
-const findPetByName = async (props) => {
-  return await axios.post(`http://localhost:8080/api/pets/${props.userId}`, {
-    props,
+const findPetByName = ({ userId, name }) => {
+  return axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/api/pets/find`, {
+    userId,
+    name,
   });
 };
 

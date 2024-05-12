@@ -1,9 +1,9 @@
 // Authentication service - (LOGIN, LOGOUT, REGISTER)
 
 import axios from "axios";
-const API_URL = process.env.NEXT_PUBLIC_BACKEND;
+
 const register = (username, email, password) => {
-  return axios.post(API_URL + "/api/users/signup", {
+  return axios.post(`${process.env.NEXT_PUBLIC_BACKEND}/api/users/signup`, {
     username,
     email,
     password,
@@ -12,7 +12,7 @@ const register = (username, email, password) => {
 
 const login = (username, password) => {
   return axios
-    .post(API_URL + "/api/users/signin", {
+    .post(`${process.env.NEXT_PUBLIC_BACKEND}/api/users/signin`, {
       username,
       password,
     })

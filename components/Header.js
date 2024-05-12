@@ -44,7 +44,7 @@ function Header(props) {
                 <Link href="/shop">Shop</Link>
               </li>
               <li>
-                <Link href="/manage-pets">Manage Pets</Link>
+                <Link href="/manage_pets">Manage Pets</Link>
               </li>
               <li>
                 <Link href="/subscriptions">Subscriptions</Link>
@@ -95,7 +95,7 @@ function Header(props) {
             <Link href="/shop">Shop</Link>
           </li>
           <li>
-            <Link href="/manage-pets">Manage Pets</Link>
+            <Link href="/manage_pets">Manage Pets</Link>
           </li>
           <li>
             <Link href="/subscriptions">Subscriptions</Link>

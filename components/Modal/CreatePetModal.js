@@ -15,7 +15,7 @@ export default function CreatePetModal(props) {
   const [dict] = useState([]);
   const { user: currentUser } = useSelector((state) => state.auth);
 
-  // Population of the pet breed select tag's options
+  // Population of the pet breeds select tag's options
   useEffect(() => {
     PetService.getDogBreeds().then((response) =>
       response.data.forEach((element) => {
@@ -30,12 +30,12 @@ export default function CreatePetModal(props) {
   const validate = (values) => {
     const errors = {};
     // Name validation
-    if (!values.name) {
+    if (!values.petName) {
       errors.name = "Please enter a valid name.";
-    } else if (values.name.length < 3) {
+    } else if (values.petName.length < 3) {
       errors.name = "Name must be more than 2 characters.";
-    } else if (values.name.length > 20) {
-      errors.name = "Name must be less than 20 characters.";
+    } else if (values.petName.length > 20) {
+      errors.petName = "Name must be less than 20 characters.";
     }
     // Age validation
     if (!values.age) {
@@ -58,22 +58,18 @@ export default function CreatePetModal(props) {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      petName: "",
       age: "",
       weight: "",
       breed: "",
     },
     validate,
     onSubmit: (values) => {
-      const { name, age, breed, weight } = values;
-      let userId = currentUser.id;
-      PetService.findPetByName({ userId, name }).then((response) => {
-        if (response.data) {
-          toast.error("Duplicate Pet");
-        } else {
-          dispatch(createPet({ name, age, breed, weight, userId }));
-          close.current.click();
-        }
+      const { petName, age, breed, weight } = values;
+      const userId = currentUser.id;
+      PetService.findPetByName({ petName, userId }).then((response) => {
+        dispatch(createPet({ petName, age, breed, weight, userId }));
+        close.current.click();
       });
     },
   });

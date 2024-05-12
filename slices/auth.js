@@ -74,11 +74,11 @@ export const findPetById = createAsyncThunk(
 
 export const createPet = createAsyncThunk(
   "pet/create",
-  async ({ userId, name, age, breed, weight }, thunkAPI) => {
+  async ({ userId, petName, age, breed, weight }, thunkAPI) => {
     try {
       const response = await UserService.createPet(
         userId,
-        name,
+        petName,
         age,
         breed,
         weight
