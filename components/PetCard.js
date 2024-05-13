@@ -143,7 +143,7 @@ function PetCard({ image, data }) {
                 <h4>{weight}lbs</h4>
               </div>
             </div>
-          </div>{" "}
+          </div>
         </>
       )}
     </div>

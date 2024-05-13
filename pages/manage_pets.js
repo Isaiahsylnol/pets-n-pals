@@ -28,7 +28,7 @@ export default function ManagePets() {
   return (
     <div className="justify-center w-full">
       <Head>
-        <title>Profile</title>
+        <title>Manage Pets</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"

@@ -17,8 +17,9 @@ const createPet = (userId, name, age, breed, weight) => {
 
 const editPet = async (username, name, weight, age, breed, target, id) => {
   return axios.put(
-    `${process.env.NEXT_PUBLIC_BACKEND}/api/pets/${id}`,
+    `${process.env.NEXT_PUBLIC_BACKEND}/api/pets/edit`,
     {
+      id,
       target,
       name,
       weight,

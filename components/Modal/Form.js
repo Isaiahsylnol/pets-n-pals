@@ -5,17 +5,17 @@ export default function PetForm(props) {
   return (
     <form onSubmit={props.onSubmit} className="flex flex-col gap-y-8">
       <div>
-        <label htmlFor="petName">Name</label>
+        <label htmlFor="name">Name</label>
         <input
-          id="petName"
-          name="petName"
+          id="name"
+          name="name"
           type="text"
           className="input shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           onChange={props.formik.handleChange}
           onBlur={props.formik.handleBlur}
           value={props.formik.values.name}
         />
-        {props.formik.touched.name && props.formik.errors.name ? (
+        {props.formik.touched.petName && props.formik.errors.name ? (
           <div className="text-red-500 text-xs italic">
             {props.formik.errors.name}
           </div>
