@@ -98,21 +98,32 @@ function PetCard({ image, data }) {
   }
 
   return (
-    <div className="rounded-xl bg-slate-300 hover:bg-slate-400 p-2 transform transition-all hover:translate-y-2 duration-300 hover:shadow-xl">
+    <div className="rounded-xl mb-6 sm:max-w-lg mx-auto bg-slate-300 border-[12px] border-slate-300 transform transition-all hover:translate-y-2 duration-300 hover:shadow-lg">
       {toggle ? (
-        <div className="float-right p-3 text-white rounded bg-zinc-700">
-          <button onClick={editToggle}>Cancel</button>
+        <div className="float-right w-full text-white rounded p-6">
+          <button
+            onClick={editToggle}
+            className="float-right rounded-md bg-black p-3"
+          >
+            Cancel
+          </button>
         </div>
       ) : (
-        <div className="float-right p-3">
+        <div className="float-right -mt-7 w-11 flex justify-center mx-auto bg-slate-300 rounded-lg p-2">
           <button onClick={editToggle} className="text-5xl rounded-2xl -mt-10">
             ...
           </button>
         </div>
       )}
-
       {toggle ? (
-        <div className="m-4">
+        <div className="m-3 bg-slate-400 p-12">
+          <Image
+            className="mx-auto mb-12 flex"
+            src={image}
+            alt="Pet thumbnail"
+            width={152}
+            height={136}
+          />
           <EditPetForm
             formik={formik}
             breeds={dict}
@@ -121,26 +132,36 @@ function PetCard({ image, data }) {
           />
           {/* Delete Pet Button */}
           <button
-            className="rounded w-full bottom-12 p-3 bg-red-500 hover:bg-red-600 text-white"
+            className="rounded flex w-full mt-4 text-center bottom-12 p-3 bg-red-500 hover:bg-red-600 text-white"
             onClick={deletePetCell}
           >
-            DELETE
+            <span className="flex justify-center w-full text-center">
+              DELETE
+            </span>
           </button>
         </div>
       ) : (
         <>
-          <div className="p-8 text-lg rounded-xl">
-            <div className="sm:flex gap-12 items-center">
-              <div>
-                <Image src={image} alt="Pet thumbnail" width={72} height={76} />
+          <div className="p-4 rounded-xl bg-slate-400">
+            <div className="flex flex-row gap-5 lg:flex items-center pl-20">
+              {/* column 1 */}
+              <div className="flex-none w-fit">
+                <Image src={image} alt="Pet thumbnail" width={92} height={96} />
               </div>
+              {/* column 2 */}
               <div>
-                <h2 className="font-semibold text-2xl">{name}</h2>
-                <h4>{breed}</h4>
-              </div>
-              <div>
-                <h4>{age} years old</h4>
-                <h4>{weight}lbs</h4>
+                <div className="flex-none">
+                  <h2 className="font-semibold text-2xl">{name}</h2>
+                </div>
+                <div className="flex-none">
+                  <h4>{breed}</h4>
+                </div>
+                <div className="flex-none">
+                  <h4>{age} years old</h4>
+                </div>
+                <div className="flex-none">
+                  <h4>{weight}lbs</h4>
+                </div>
               </div>
             </div>
           </div>

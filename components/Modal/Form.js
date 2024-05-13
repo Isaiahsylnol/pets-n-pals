@@ -3,7 +3,7 @@ import CustomSelect from "../CustomSelect";
 import toast, { Toaster } from "react-hot-toast";
 export default function PetForm(props) {
   return (
-    <form onSubmit={props.onSubmit} className="flex flex-col gap-y-8">
+    <form onSubmit={props.onSubmit} className="flex flex-col w-full gap-y-6">
       <div>
         <label htmlFor="name">Name</label>
         <input

@@ -36,11 +36,11 @@ export default function ManagePets() {
         />
       </Head>
       <Header countCartItems={cartItems.length} />
-      <main className="min-h-screen flex items-center justify-center mt-16 sm:mt-0">
+      <main className="min-h-screen flex items-center justify-center">
         <div className="w-full max-w-2xl">
           <button
             onClick={() => addModal(CreatePetModal)}
-            className="flex bg-orange-400 hover:bg-orange-500 p-6 w-5/6 mx-auto justify-center text-lg font-semibold text-white uppercase rounded-2xl"
+            className="flex bg-orange-400 hover:bg-orange-500 p-6 mb-12 w-5/6 mx-auto justify-center text-lg font-semibold text-white uppercase rounded-2xl"
           >
             Create Pet
           </button>
