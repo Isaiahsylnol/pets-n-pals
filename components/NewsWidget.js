@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function NewsWidget({ item }) {
   return (
-    <div key={item.id} className="p-4 w-full mb-6">
+    <div key={item.id} className="p-5">
       <div className="rounded-lg overflow-hidden">
         <Image
           src={`${item.thumbnail}`}
@@ -13,10 +13,10 @@ function NewsWidget({ item }) {
           className="object-contain"
         />
       </div>
-      <h2 className="text-xl font-medium title-font text-gray-900 mt-5">
+      <h2 className="text-xl font-medium title-font text-gray-900 mt-6">
         {item?.title}
       </h2>
-      <p className="text-base leading-relaxed mt-2">
+      <p className="leading-relaxed mt-2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus
         ipsum nec pulvinar finibus. Proin non ipsum eu dui tempor iaculis
         ultrices id velit. Donec eget accumsan ipsum. Sed ipsum dui, porta sit
