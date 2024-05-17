@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
 import Header from "../components/Header.js";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ export default function Subscriptions() {
           <h1 className="text-3xl text-center font-bold pb-16">
             Choose the plan that's right for you.
           </h1>
-          <div className="flex items-center justify-center flex-wrap p-7 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 mx-auto lg:max-w-4xl gap-20">
             <SubscribeContainer
               tier="Basic"
               priceId="price_1MpWbCBNWulKDnZkdaeb0CgC"
@@ -93,30 +93,22 @@ export default function Subscriptions() {
             </SubscribeContainer>
           </div>
           {user ? null : (
-            <a href="/login-register">
-              <button
-                type="button"
-                className="text-white bg-orange-400 hover:bg-[#1F1F1F] font-medium rounded-full text-sm px-8 py-4 text-center mr-2 mb-2"
-              >
-                Sign Up
-              </button>
-            </a>
+            <div className="bg-white mt-16 p-6 rounded-lg text-center">
+              <h2 className="text-2xl font-semibold mb-4">Join Us Today!</h2>
+              <p className="mb-6 text-gray-700">
+                Sign up now to access exclusive subscription plans and enjoy all
+                the benefits we offer.
+              </p>
+              <a href="/login-register">
+                <button
+                  type="button"
+                  className="text-white bg-orange-400 hover:bg-[#1F1F1F] font-medium rounded-full text-sm px-8 py-4"
+                >
+                  Sign Up
+                </button>
+              </a>
+            </div>
           )}
-          <div className="mt-8 text-center">
-            <span>
-              See{" "}
-              <a
-                href="/terms"
-                target="_blank"
-                aria-hidden="false"
-                className="text-orange-500"
-              >
-                Terms & Conditions
-              </a>{" "}
-              for full details. Prepaid monthly, non-refundable, automatically
-              renews monthly.
-            </span>
-          </div>
         </div>
       </main>
       <Footer />

@@ -94,7 +94,7 @@ export default function DynamicPage({ data }) {
               starSpacing="5px"
               name="rating"
             />
-            <p className="leading-relaxed">{data.description}</p>
+            <p className="leading-relaxed mt-5">{data.description}</p>
             <hr className="flex items-center border-b-2 border-gray-100 mt-5 mb-5" />
             <div className="flex">
               <span className="title-font font-medium text-2xl text-gray-900">

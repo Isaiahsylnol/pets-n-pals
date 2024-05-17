@@ -1,26 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../slices/auth";
+
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
+
 import Dropdown from "./Dropdown";
 
 function Header(props) {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const { user: currentUser } = useSelector((state) => state.auth);
-  const [user, setUser] = useState();
   const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
-
-  useEffect(() => {
-    setUser(currentUser);
-  }, [currentUser]);
-
-  const handleSignOut = async () => {
-    dispatch(logout());
-    router.push("/");
-  };
 
   return (
     <div className="p-4 shadow bg-[#56788f] text-white top-0 z-20 sticky">
@@ -34,7 +20,8 @@ function Header(props) {
             className="object-contain"
           />
         </Link>
-        <section className="MOBILE-MENU flex lg:hidden justify-end">
+        {/* MOBILE-MENU */}
+        <section className="flex md:hidden justify-end">
           <div className={isNavOpen ? "w-full top-0 z-10" : "hidden"}>
             <ul className="flex flex-col text-2xl  mt-16 space-y-14 uppercase">
               <li>

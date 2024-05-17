@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import accountPic from "../assets/account-icon.png";
 import { createCart } from "../slices/cart";
+import Link from "next/link";
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -95,7 +96,7 @@ function Dropdown() {
               Settings
             </li>
             <li className="hover:bg-gray-800 hover:rounded w-full h-12 flex justify-center items-center cursor-pointer">
-              FAQS
+              <Link href="/faq">FAQS</Link>
             </li>
             <li className="hover:bg-gray-800 hover:rounded w-full h-12 flex justify-center items-center cursor-pointer">
               <button onClick={handleSignOut}>Sign out</button>
