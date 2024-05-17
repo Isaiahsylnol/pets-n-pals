@@ -1,6 +1,7 @@
 import React from "react";
 import CustomSelect from "../CustomSelect";
 import toast, { Toaster } from "react-hot-toast";
+
 export default function PetForm(props) {
   return (
     <form onSubmit={props.onSubmit} className="flex flex-col w-full gap-y-6">
@@ -15,7 +16,7 @@ export default function PetForm(props) {
           onBlur={props.formik.handleBlur}
           value={props.formik.values.name}
         />
-        {props.formik.touched.petName && props.formik.errors.name ? (
+        {props.formik.touched.name && props.formik.errors.name ? (
           <div className="text-red-500 text-xs italic">
             {props.formik.errors.name}
           </div>
@@ -64,7 +65,7 @@ export default function PetForm(props) {
         options={props.breeds}
       />
       {props.formik.touched.breed && props.formik.errors.breed ? (
-        <div className="text-red-500 text-xs italic -mt-8">
+        <div className="text-red-500 text-xs italic -mt-5">
           {props.formik.errors.breed}
         </div>
       ) : null}

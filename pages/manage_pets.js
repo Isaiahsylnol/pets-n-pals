@@ -11,7 +11,6 @@ export default function ManagePets() {
   const { user: currentUser } = useSelector((state) => state.auth);
   const [cartItems, setCartItems] = useState([]);
   const [user, setUser] = useState();
-
   const addModal = (modal) => {
     ModalService.open(modal);
   };

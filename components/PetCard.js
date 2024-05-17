@@ -11,10 +11,13 @@ function PetCard({ image, data }) {
   const { user: currentUser } = useSelector((state) => state.auth);
   const [dict] = useState([]);
   const [toggle, setToggle] = useState(false);
-  const dispatch = useDispatch();
+
   const { name, age, breed, weight } = data;
   const id = currentUser?.id;
   const username = currentUser?.username;
+
+  const dispatch = useDispatch();
+
   // Population of the pet breed select tag's options
   useEffect(() => {
     PetService.getDogBreeds().then((response) =>

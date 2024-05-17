@@ -1,55 +1,56 @@
+import React, { useEffect, useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import { createPet } from "../../slices/auth";
+import PetService from "../../services/pet.service";
 import Modal from "./Modal";
 import ModalBody from "./ModalBody";
 import ModalHeader from "./ModalHeader";
-import React, { useEffect, useState, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { createPet } from "../../slices/auth";
-import { useFormik } from "formik";
-import PetService from "../../services/pet.service";
 import PetForm from "./Form";
-import toast from "react-hot-toast";
 
 export default function CreatePetModal(props) {
-  const close = useRef(null);
+  const closeRef = useRef(null);
   const dispatch = useDispatch();
-  const [dict] = useState([]);
+  const [breeds, setBreeds] = useState([]);
   const { user: currentUser } = useSelector((state) => state.auth);
+  const [toggle, setToggle] = useState(false);
 
-  // Population of the pet breeds select tag's options
   useEffect(() => {
-    PetService.getDogBreeds().then((response) =>
-      response.data.forEach((element) => {
-        dict.push({
-          value: element.name,
-          label: element.name,
-        });
-      })
-    );
+    fetchBreeds();
   }, []);
+
+  const fetchBreeds = async () => {
+    try {
+      const response = await PetService.getDogBreeds();
+      const breedOptions = response.data.map((breed) => ({
+        value: breed.name,
+        label: breed.name,
+      }));
+      setBreeds(breedOptions);
+    } catch (error) {
+      console.error("Failed to fetch breeds", error);
+    }
+  };
 
   const validate = (values) => {
     const errors = {};
-    // Name validation
-    if (!values.petName) {
+    if (!values.name) {
       errors.name = "Please enter a valid name.";
-    } else if (values.petName.length < 3) {
+    } else if (values.name.length < 3) {
       errors.name = "Name must be more than 2 characters.";
-    } else if (values.petName.length > 20) {
-      errors.petName = "Name must be less than 20 characters.";
+    } else if (values.name.length > 20) {
+      errors.name = "Name must be less than 20 characters.";
     }
-    // Age validation
     if (!values.age) {
       errors.age = "Please enter a valid age.";
     } else if (values.age > 30) {
       errors.age = "Age must be less than 30.";
     }
-    // Weight validation
     if (!values.weight) {
       errors.weight = "Please enter a valid weight.";
     } else if (values.weight > 230) {
       errors.weight = "Weight must be less than 230lb.";
     }
-    // Breed validation
     if (!values.breed) {
       errors.breed = "Please enter a valid breed.";
     }
@@ -58,19 +59,25 @@ export default function CreatePetModal(props) {
 
   const formik = useFormik({
     initialValues: {
-      petName: "",
+      name: "",
       age: "",
       weight: "",
       breed: "",
     },
     validate,
-    onSubmit: (values) => {
-      const { petName, age, breed, weight } = values;
-      const userId = currentUser.id;
-      PetService.findPetByName({ petName, userId }).then((response) => {
-        dispatch(createPet({ petName, age, breed, weight, userId }));
-        close.current.click();
-      });
+    onSubmit: async (values) => {
+      try {
+        const userId = currentUser.id;
+        await PetService.findPetByName({ name: values.name, userId });
+        dispatch(createPet({ ...values, userId }));
+        setToggle(true);
+
+        setTimeout(() => {
+          closeRef.current.click();
+        }, 2000);
+      } catch (error) {
+        console.error("Failed to create pet", error);
+      }
     },
   });
 
@@ -78,7 +85,7 @@ export default function CreatePetModal(props) {
     <Modal>
       <div className="float-right">
         <button
-          ref={close}
+          ref={closeRef}
           aria-label="Close Modal"
           aria-labelledby="close-modal"
           onClick={props.close}
@@ -107,12 +114,18 @@ export default function CreatePetModal(props) {
         </div>
       </ModalHeader>
       <ModalBody>
-        <PetForm
-          breeds={dict}
-          formik={formik}
-          onSubmit={formik.handleSubmit}
-          submitBtnTitle="Register"
-        />
+        {toggle ? (
+          <div className="bg-green-100 text-green-800 p-4 rounded">
+            Pet created successfully!
+          </div>
+        ) : (
+          <PetForm
+            breeds={breeds}
+            formik={formik}
+            onSubmit={formik.handleSubmit}
+            submitBtnTitle="Register"
+          />
+        )}
       </ModalBody>
     </Modal>
   );

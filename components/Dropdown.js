@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-//import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { logout } from "../slices/auth";
 import ClickOutsideHandler from "../utils/clickOutside";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import accountPic from "../assets/account-icon.png";
 import { createCart } from "../slices/cart";
+
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setCurrentUser] = useState();
@@ -36,7 +36,7 @@ function Dropdown() {
 
   useEffect(() => {
     setCurrentUser(currentUser);
-  }, []);
+  }, [currentUser]);
 
   const handleSignOut = async () => {
     dispatch(
@@ -50,6 +50,9 @@ function Dropdown() {
     dispatch(logout());
     setCurrentUser();
 
+    // Close the dropdown
+    setIsOpen(false);
+
     navigate.push("/");
   };
 
@@ -58,7 +61,7 @@ function Dropdown() {
       {user ? (
         <button
           className="text-gray-200 font-normal no-underline hover:text-white text-base"
-          onClick={() => toggleDropdown()}
+          onClick={toggleDropdown}
         >
           <Image
             src={accountPic}
@@ -77,7 +80,6 @@ function Dropdown() {
         </a>
       )}
       {isOpen && (
-        // dropdown-content
         <div className="bg-gray-700 sm:w-28 sm:-ml-20 mt-3 sm:absolute rounded text-base">
           <ClickOutsideHandler
             containerClass=".dropdown"
@@ -85,7 +87,6 @@ function Dropdown() {
           />
           <ul className="space-y-1 w-full">
             <li className="hover:bg-gray-800 hover:rounded w-full h-12 flex justify-center items-center">
-              {" "}
               <button onClick={() => navigateAndClose("/profile")}>
                 View profile
               </button>
@@ -97,7 +98,6 @@ function Dropdown() {
               FAQS
             </li>
             <li className="hover:bg-gray-800 hover:rounded w-full h-12 flex justify-center items-center cursor-pointer">
-              {" "}
               <button onClick={handleSignOut}>Sign out</button>
             </li>
           </ul>
