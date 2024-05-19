@@ -20,6 +20,8 @@ const Home = () => {
   const [cartItems, setCartItems] = useState([]);
   const [newsItems, setNewsItems] = useState([]);
   const [products, setProducts] = useState([]);
+  const [articles, setArticles] = useState([]);
+  const [filterActive, setFilterActive] = useState(false);
 
   const router = useRouter();
 
@@ -76,6 +78,22 @@ const Home = () => {
     };
   }, [logOut]);
 
+  async function toggleFilter() {
+    const breeds = currentUser.pets.map((pet) => pet.breed);
+    try {
+      if (filterActive) {
+        const { data } = await ArticleService.fetchArticles();
+        setArticles(data);
+      } else {
+        const { data } = await ArticleService.fetchArticlesByBreed(breeds);
+        setArticles(data);
+      }
+      setFilterActive(!filterActive);
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+    }
+  }
+
   return (
     <>
       <Head>
@@ -91,22 +109,41 @@ const Home = () => {
         <div>
           {/* News Feed */}
           <section className="rounded-lg">
-            <h1 className="uppercase text-2xl font-bold p-3">Latest News</h1>
+            <div className="flex w-full justify-between mt-6">
+              <h1 className="uppercase text-2xl font-bold p-3">Latest News</h1>
+              <button
+                onClick={toggleFilter}
+                className="uppercase border-2 border-gray-300 text-sm text-gray-700 py-1 px-3 rounded-lg transition duration-300 ease-in-out hover:bg-[#1F1F1F] hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-300"
+              >
+                {filterActive ? "Show All" : "For You"}
+              </button>
+            </div>
             <div className="flex flex-wrap -mx-2">
-              {newsItems?.map((item) => {
-                return (
-                  <button
-                    type="button"
-                    key={item.id}
-                    className="w-full text-left mb-4 sm:w-1/2 lg:w-1/3 xl:w-1/4"
-                    onClick={() => {
-                      router.push(`news/${item.id}`);
-                    }}
-                  >
-                    <NewsWidget item={item} />
-                  </button>
-                );
-              })}
+              {articles.length > 0
+                ? articles.map((item) => (
+                    <button
+                      type="button"
+                      key={item.id}
+                      className="w-full text-left mb-4 sm:w-1/2 lg:w-1/3 xl:w-1/4"
+                      onClick={() => {
+                        router.push(`news/${item.id}`);
+                      }}
+                    >
+                      <NewsWidget item={item} />
+                    </button>
+                  ))
+                : newsItems.map((item) => (
+                    <button
+                      type="button"
+                      key={item.id}
+                      className="w-full text-left mb-4 sm:w-1/2 lg:w-1/3 xl:w-1/4"
+                      onClick={() => {
+                        router.push(`news/${item.id}`);
+                      }}
+                    >
+                      <NewsWidget item={item} />
+                    </button>
+                  ))}
             </div>
           </section>
           <section>
