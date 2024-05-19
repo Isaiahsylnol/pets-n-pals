@@ -1,16 +1,16 @@
 import Head from "next/head";
-import Header from "../components/Header.js";
+import Header from "../components/Header";
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/auth";
 import EventBus from "../common/EventBus";
-import ArticleService from "../services/article.service.js";
+import ArticleService from "../services/article.service";
 import dynamic from "next/dynamic";
 import Footer from "../components/Footer";
-import withAuth from "../common/AuthVerify.js";
+import withAuth from "../common/AuthVerify";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
-import { useRouter } from "next/router.js";
+import { useRouter } from "next/router";
 
 const NewsWidget = dynamic(() => import("../components/NewsWidget"), {
   ssr: false,
@@ -24,75 +24,71 @@ const Home = () => {
   const [filterActive, setFilterActive] = useState(false);
 
   const router = useRouter();
-
-  // Redux hooks
-  const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { user: currentUser } = useSelector((state) => state.auth);
 
-  // Fetch articles function
+  // Fetch all articles
   const fetchArticles = async () => {
     try {
       const { data } = await ArticleService.fetchArticles();
-      console.log(data);
       setNewsItems(data);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
   };
 
-  // Fetch products function
+  // Fetch products
   const fetchProducts = async () => {
     try {
-      const result = await axios.get(
+      const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND}/api/product`
       );
-      setProducts(result.data);
+      setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error);
+    }
+  };
+
+  // Fetch cart items from local storage
+  const fetchCartItems = () => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
     }
   };
 
   useEffect(() => {
     fetchProducts();
     fetchArticles();
-
-    // Fetch cart items from local storage
-    const storedCartItems = localStorage.getItem("cartItems");
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
+    fetchCartItems();
   }, []);
 
-  // Logout callback
+  // Handle user logout
   const logOut = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
 
   useEffect(() => {
-    // Subscribe to logout event
     EventBus.on("logout", logOut);
-
-    // Unsubscribe from logout event on component unmount
     return () => {
       EventBus.remove("logout", logOut);
     };
   }, [logOut]);
 
-  async function toggleFilter() {
+  // Toggle filter for articles based on pet breeds
+  const toggleFilter = async () => {
     const breeds = currentUser.pets.map((pet) => pet.breed);
     try {
-      if (filterActive) {
-        const { data } = await ArticleService.fetchArticles();
-        setArticles(data);
-      } else {
-        const { data } = await ArticleService.fetchArticlesByBreed(breeds);
-        setArticles(data);
-      }
+      const { data } = filterActive
+        ? await ArticleService.fetchArticles()
+        : await ArticleService.fetchArticlesByBreed(breeds);
+
+      setArticles(data);
       setFilterActive(!filterActive);
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
-  }
+  };
 
   return (
     <>
@@ -105,70 +101,41 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header countCartItems={cartItems.length} />
-      <main className="min-h-screen sm:p-8">
+      <main className="min-h-screen sm:p-8 max-w-7xl mx-auto">
         <div>
           {/* News Feed */}
-          <section className="rounded-lg">
+          <section>
             <div className="flex w-full justify-between mt-6">
               <h1 className="uppercase text-2xl font-bold p-3">Latest News</h1>
               <button
                 onClick={toggleFilter}
-                className="uppercase border-2 border-gray-300 text-sm text-gray-700 py-1 px-3 rounded-lg transition duration-300 ease-in-out hover:bg-[#1F1F1F] hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="uppercase border border-gray-600 text-sm text-gray-700 px-3 h-12 rounded-lg transition duration-300 ease-in-out hover:bg-[#1F1F1F] hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-300"
               >
                 {filterActive ? "Show All" : "For You"}
               </button>
             </div>
-            <div className="flex flex-wrap -mx-2">
-              {articles.length > 0
-                ? articles.map((item) => (
-                    <button
-                      type="button"
-                      key={item.id}
-                      className="w-full text-left mb-4 sm:w-1/2 lg:w-1/3 xl:w-1/4"
-                      onClick={() => {
-                        router.push(`news/${item.id}`);
-                      }}
-                    >
-                      <NewsWidget item={item} />
-                    </button>
-                  ))
-                : newsItems.map((item) => (
-                    <button
-                      type="button"
-                      key={item.id}
-                      className="w-full text-left mb-4 sm:w-1/2 lg:w-1/3 xl:w-1/4"
-                      onClick={() => {
-                        router.push(`news/${item.id}`);
-                      }}
-                    >
-                      <NewsWidget item={item} />
-                    </button>
-                  ))}
+            <div>
+              {(articles.length > 0 ? articles : newsItems).map((item) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  className="w-full sm:w-1/2 md:w-2/4 lg:w-1/3 mb-4"
+                  onClick={() => router.push(`news/${item.id}`)}
+                >
+                  <NewsWidget item={item} />
+                </button>
+              ))}
             </div>
           </section>
+          {/* New Arrivals */}
           <section>
             <h1 className="uppercase text-2xl font-bold p-3">New Arrivals</h1>
-            <div className="sm:flex">
-              <div className="w-full flex justify-center p-4">
-                <div className="justify-center">
-                  <ProductCard key={products[0]?.sku} item={products[0]} />
+            <div className="sm:flex flex-wrap -mx-3">
+              {products.slice(0, 4).map((product) => (
+                <div className="w-full sm:w-1/2 lg:w-1/4 p-4" key={product.sku}>
+                  <ProductCard item={product} />
                 </div>
-              </div>
-              <div className="w-full flex justify-center p-4">
-                <div className="justify-center">
-                  <ProductCard key={products[3]?.sku} item={products[3]} />
-                </div>
-              </div>
-              <div className="w-full flex justify-center p-4">
-                <div className="justify-center">
-                  <ProductCard key={products[5]?.sku} item={products[5]} />
-                </div>
-              </div>
-              <div className="w-full flex justify-center p-4">
-                <div className="justify-center">
-                  <ProductCard key={products[6]?.sku} item={products[6]} />
-                </div>
-              </div>
+              ))}
             </div>
           </section>
         </div>
