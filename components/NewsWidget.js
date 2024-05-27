@@ -4,7 +4,7 @@ import Image from "next/image";
 function NewsWidget({ item }) {
   return (
     <div key={item.id} className="p-5 w-full">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div className="bg-white shadow-lg text-left rounded-lg overflow-hidden">
         <Image
           src={item.thumbnail}
           alt="News thumbnail"

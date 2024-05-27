@@ -20,7 +20,6 @@ const Home = () => {
   const [cartItems, setCartItems] = useState([]);
   const [newsItems, setNewsItems] = useState([]);
   const [products, setProducts] = useState([]);
-  const [articles, setArticles] = useState([]);
   const [filterActive, setFilterActive] = useState(false);
 
   const router = useRouter();
@@ -30,7 +29,7 @@ const Home = () => {
   // Fetch all articles
   const fetchArticles = async () => {
     try {
-      const { data } = await ArticleService.fetchArticles();
+      const { data } = await ArticleService.fetchArticlesByBreed(["any"]);
       setNewsItems(data);
     } catch (error) {
       console.error("Error fetching articles:", error);
@@ -79,11 +78,13 @@ const Home = () => {
   const toggleFilter = async () => {
     const breeds = currentUser.pets.map((pet) => pet.breed);
     try {
-      const { data } = filterActive
-        ? await ArticleService.fetchArticles()
-        : await ArticleService.fetchArticlesByBreed(breeds);
-
-      setArticles(data);
+      if (filterActive) {
+        const { data } = await ArticleService.fetchArticlesByBreed(["any"]);
+        setNewsItems(data);
+      } else {
+        const { data } = await ArticleService.fetchArticlesByBreed(breeds);
+        setNewsItems(data);
+      }
       setFilterActive(!filterActive);
     } catch (error) {
       console.error("Error fetching articles:", error);
@@ -115,19 +116,25 @@ const Home = () => {
               </button>
             </div>
             <div>
-              {(articles.length > 0 ? articles : newsItems).map((item) => (
-                <button
-                  type="button"
-                  key={item.id}
-                  className="w-full sm:w-1/2 md:w-2/4 lg:w-1/3 mb-4"
-                  onClick={() => router.push(`news/${item.id}`)}
-                >
-                  <NewsWidget item={item} />
-                </button>
-              ))}
+              {newsItems.length > 0 ? (
+                newsItems.map((item) => (
+                  <button
+                    type="button"
+                    key={item.id}
+                    className="w-full sm:w-1/2 md:w-2/4 lg:w-1/3 mb-4"
+                    onClick={() => router.push(`news/${item.id}`)}
+                  >
+                    <NewsWidget item={item} />
+                  </button>
+                ))
+              ) : (
+                <p className="text-center text-gray-700">
+                  No news available at the moment.
+                </p>
+              )}
             </div>
           </section>
-          {/* New Arrivals */}
+          {/* New Product Arrivals */}
           <section>
             <h1 className="uppercase text-2xl font-bold p-3">New Arrivals</h1>
             <div className="sm:flex flex-wrap -mx-3">

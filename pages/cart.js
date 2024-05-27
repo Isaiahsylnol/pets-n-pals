@@ -224,7 +224,7 @@ export default function Cart() {
         <div className="text-2xl text-center uppercase font-bold h-screen mt-64">
           YOUR BAG IS CURRENTLY EMPTY.
           <Link href="/shop">
-            <button className="flex mx-auto py-2 px-6 mt-8 text-white text-base bg-orange-700 hover:bg-orange-800 focus:outline-none rounded">
+            <button className="flex mx-auto py-2 px-6 mt-8 text-white text-base bg-orange-700 hover:bg-[#1F1F1F] focus:outline-none rounded">
               Continue Shopping
             </button>
           </Link>
