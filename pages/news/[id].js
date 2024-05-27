@@ -21,7 +21,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const { data } = await ArticleService.fetchArticles();
+  const { data } = await ArticleService.fetchArticlesByBreed(["any"]);
 
   const paths = data.map((article) => {
     return {
@@ -59,7 +59,6 @@ export default function DynamicArticle({ article }) {
               width={902}
               height={500}
             />
-
             <div className="flex flex-col mx-auto mt-5 max-w-4xl p-8 sm:p-0">
               <h1 className="text-gray-900 text-3xl font-medium mb-6">
                 {article.title}
