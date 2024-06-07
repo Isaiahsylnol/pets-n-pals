@@ -6,7 +6,7 @@ import Image from "next/image";
 import Dropdown from "./Dropdown";
 
 function Header(props) {
-  const [isNavOpen, setIsNavOpen] = useState(false); // initiate isNavOpen state with false
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
     <div className="p-4 shadow bg-[#56788f] text-white top-0 z-20 sticky">
@@ -21,7 +21,7 @@ function Header(props) {
           />
         </Link>
         {/* MOBILE-MENU */}
-        <section className="flex md:hidden justify-end">
+        <section className="flex md:hidden">
           <div className={isNavOpen ? "w-full top-0 z-10" : "hidden"}>
             <ul className="flex flex-col text-2xl  mt-16 space-y-14 uppercase">
               <li>
@@ -65,7 +65,7 @@ function Header(props) {
             </ul>
           </div>
           <div
-            className="space-y-2 md:hidden flex flex-col float-right z-10 mt-1 mr-2"
+            className="space-y-2 md:hidden flex flex-col z-10 mt-1 mr-2"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
           >
             <span className="block h-0.5 w-8 animate-pulse bg-white"></span>
