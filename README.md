@@ -1,6 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# pets-n-pals
+This is a self educational project utilizing popular dependencies such as: 
 
+Redux-ToolKit
+• Express
+• Next.js
+• Formik
+• React-Router-Dom
+• axios
+• Tailwind CSS
+
+and more 
+ 
 ## Getting Started
+
+```bash
+cd client 
+npm install
+```
 
 First, run the development server:
 
@@ -9,26 +25,116 @@ npm run dev
 # or
 yarn dev
 ```
+## Web API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Methods        | Urls           | Actions  |
+| -------------- |----------------| -------------
+| User
+| GET       | /api/user/          | Find all users |
+| GET       | /api/user/:id       | Find single user by ID |
+| PUT       | /api/user/:id       | Edit user by ID |
+| DELETE    | /api/user/:id       | Delete user by ID |
+| Pet
+| POST      | /api/pets/add-pet   | Create pet |
+| POST      | /api/pets/find     | Find single pet |
+| PUT       | /api/pets/edit       | Edit pet |
+| DELETE    | /api/pets/:id       | Delete pet |
+| Cart        
+| GET       | /api/cart/          | Find All Carts |
+| GET       | /api/cart/fetchCart          | Find a single user's cart by ID |
+| POST      | /api/cart/create-cart | Create shopping cart |
+| Auth        
+| POST       | /api/users/signup          | Register user account |
+| POST       | /api/users/signin          | Login a user |
+| Article        
+| POST       | /api/article/all       | Find all articles |
+| POST       | /api/article/findById/:id          | Find a single article by ID |
+| Product        
+| POST       | /api/product/       | Find all products |
+| POST       | /api/product/:sku          | Find a single product by sku |
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Application Screenshots
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Landing Page
+- Display latest news articles
+- Feature latest and trending products 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/landing-page.png)](#features)
 
-## Learn More
+-----------
 
-To learn more about Next.js, take a look at the following resources:
+### Shop Page
+- Display all products 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/shop-page.png)](#features)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-----------
 
-## Deploy on Vercel
+### Product Details 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/product.png)](#features)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-----------
+
+### Cart Page
+- Display cart's products
+- Product quantities 
+- clear item button
+- Stripe integrated checkout
+- Add more items button
+- Detailed cost breakdown 
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/cart-page.png)](#features)
+
+-----------
+
+### Subscription Page
+- Display subscription offers 
+- Display link to subscription terms & conditions 
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/subscription-page.png)](#features)
+
+-----------
+
+### Manage Pets
+- Manage pets  
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/manage-pets.png)](#features)
+
+-----------
+
+### Create Pet
+- Create pet profile form modal  
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/create-pet.png)](#features)
+
+-----------
+
+### Edit Pet
+- Pet profile edit form modal  
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/edit-pet.png)](#features)
+
+-----------
+
+### Login/Register Page
+- Display two buttons for login and register 
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/login-register.png)](#features)
+
+-----------
+
+### Login Page
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/login.png)](#features)
+
+-----------
+
+### Profile Page
+- Display user's pets
+- Display user's information
+- Create pet Button
+- Various user action buttons
+
+[![pets n pals](https://github.com/Isaiahsylnol/pets-n-pals/blob/main/screenshots/profile.png)](#features)
+
