@@ -29,9 +29,9 @@ export default function Shop() {
 
   async function getUserCart() {
     try {
-      const response = await CartService.fetchCartById(currentUser.id);
+      const response = await CartService.fetchCartById(currentUser?.id);
       if (response.status != 200) {
-        throw new Error("Failed to fetch cart: " + response.status);
+        return;
       }
       const data = await response.data;
       // Successful response

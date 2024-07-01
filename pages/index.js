@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/auth";
 import EventBus from "../common/EventBus";
@@ -11,6 +11,7 @@ import withAuth from "../common/AuthVerify";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import { useRouter } from "next/router";
+import { ParkMap } from "../components/ParkMap";
 
 const NewsWidget = dynamic(() => import("../components/NewsWidget"), {
   ssr: false,
@@ -21,7 +22,6 @@ const Home = () => {
   const [newsItems, setNewsItems] = useState([]);
   const [products, setProducts] = useState([]);
   const [filterActive, setFilterActive] = useState(false);
-
   const router = useRouter();
   const dispatch = useDispatch();
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -115,28 +115,27 @@ const Home = () => {
                 {filterActive ? "Show All" : "For You"}
               </button>
             </div>
-            <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {newsItems.length > 0 ? (
                 newsItems.map((item) => (
-                  <button
-                    type="button"
+                  <div
                     key={item.id}
-                    className="w-full sm:w-1/2 md:w-2/4 lg:w-1/3 mb-4"
                     onClick={() => router.push(`news/${item.id}`)}
                   >
                     <NewsWidget item={item} />
-                  </button>
+                  </div>
                 ))
               ) : (
-                <p className="text-center text-gray-700">
+                <p className="text-center text-gray-700 col-span-full">
                   No news available at the moment.
                 </p>
               )}
             </div>
           </section>
+          <ParkMap />
           {/* New Product Arrivals */}
           <section>
-            <h1 className="uppercase text-2xl font-bold p-3">New Arrivals</h1>
+            <h1 className="uppercase text-xl font-bold p-4">New Arrivals</h1>
             <div className="sm:flex flex-wrap -mx-3">
               {products.slice(0, 4).map((product) => (
                 <div className="w-full sm:w-1/2 lg:w-1/4 p-4" key={product.sku}>

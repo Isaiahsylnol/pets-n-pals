@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
-
 import Dropdown from "./Dropdown";
 
 function Header(props) {
@@ -111,7 +110,9 @@ function Header(props) {
               ) : null}
             </a>
           </li>
-          <li>{<Dropdown />}</li>
+          <li>
+            <Dropdown />
+          </li>
         </ul>
       </nav>
       <style>{`
