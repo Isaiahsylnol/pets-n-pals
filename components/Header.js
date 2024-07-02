@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 import Dropdown from "./Dropdown";
@@ -14,15 +13,15 @@ function Header(props) {
           <Image
             src={require(`/assets/logo-badge.png`)}
             alt="Pets'N Pals Logo"
-            width={132}
-            height={34}
+            width={100}
+            height={25}
             className="object-contain"
           />
         </Link>
         {/* MOBILE-MENU */}
-        <section className="flex md:hidden">
+        <section className="flex md:hidden justify-end">
           <div className={isNavOpen ? "w-full top-0 z-10" : "hidden"}>
-            <ul className="flex flex-col text-2xl  mt-16 space-y-14 uppercase">
+            <ul className="flex flex-col text-2xl mt-16 space-y-14 uppercase">
               <li>
                 <Link href="/">Home</Link>
               </li>
@@ -64,16 +63,16 @@ function Header(props) {
             </ul>
           </div>
           <div
-            className="space-y-2 md:hidden flex flex-col z-10 mt-1 mr-2"
+            className="space-y-1.5 hover:animate-pulse md:hidden flex flex-col z-10 mt-1 mr-2"
             onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
           >
-            <span className="block h-0.5 w-8 animate-pulse bg-white"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-white"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-white"></span>
+            <span className="block h-0.5 w-5 bg-white"></span>
+            <span className="block h-0.5 w-5 bg-white"></span>
+            <span className="block h-0.5 w-5 bg-white"></span>
           </div>
         </section>
         {/* DESKTOP NAV ITEMS */}
-        <ul className="DESKTOP-MENU hidden space-x-4 md:flex justify-end">
+        <ul className="DESKTOP-MENU hidden h-5 -mt-1 space-x-4 md:flex justify-end">
           <li>
             <Link href="/">Home</Link>
           </li>
