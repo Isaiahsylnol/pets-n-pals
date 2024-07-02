@@ -86,7 +86,6 @@ function Header(props) {
           <li>
             <Link href="/subscriptions">Subscriptions</Link>
           </li>
-
           <li className="hover:text-slate-300">
             <a href="/cart">
               <svg

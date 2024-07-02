@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/auth";
 import EventBus from "../common/EventBus";
@@ -135,10 +135,12 @@ const Home = () => {
           <ParkMap />
           {/* New Product Arrivals */}
           <section>
-            <h1 className="uppercase text-xl font-bold p-4">New Arrivals</h1>
-            <div className="sm:flex flex-wrap -mx-3">
+            <h1 className="uppercase text-md font-bold p-4 -mb-5">
+              New Arrivals
+            </h1>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
               {products.slice(0, 4).map((product) => (
-                <div className="w-full sm:w-1/2 lg:w-1/4 p-4" key={product.sku}>
+                <div className="w-full p-4" key={product.sku}>
                   <ProductCard item={product} />
                 </div>
               ))}

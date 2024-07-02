@@ -21,7 +21,7 @@ const ProductCard = (props) => {
       as={`/product/${item?.sku}`}
       key={item?.sku}
     >
-      <div className="text-center sm:text-left">
+      <div className="text-center sm:text-left w-full grid grid-cols-2 sm:flex sm:flex-col space-x-3">
         {item ? (
           <Image
             className="object-cover object-center mx-auto"
@@ -32,21 +32,19 @@ const ProductCard = (props) => {
           />
         ) : null}
 
-        <div className="m-4">
+        <div className="mt-3 flex flex-col items-start text-[14px]">
+          <h2 className="text-gray-900 text-start mb-1">{item?.name}</h2>
           <div className="mb-1">
             <StarRatings
               rating={item?.rating}
               starRatedColor="orange"
               numberOfStars={5}
               starDimension="20px"
-              starSpacing="5px"
+              starSpacing="0px"
               name="rating"
             />
           </div>
-          <h2 className="text-gray-900 title-font text-lg font-medium">
-            {item?.name}
-          </h2>
-          <p className="mt-1">${item?.price}</p>
+          <p className="mt-2 font-bold">${item?.price}</p>
         </div>
       </div>
     </Link>
