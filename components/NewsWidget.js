@@ -3,20 +3,20 @@ import Image from "next/image";
 
 function NewsWidget({ item }) {
   return (
-    <div key={item.id} className="p-5 w-full">
-      <div className="bg-white shadow-lg text-left rounded-lg overflow-hidden">
+    <div key={item.id} className="w-full scale-95 cursor-pointer max-w-sm">
+      <div className="text-left overflow-hidden max-w-sm">
         <Image
           src={item.thumbnail}
           alt="News thumbnail"
           width={500}
-          height={300} // Adjust the height to maintain aspect ratio
-          className="object-cover w-full h-48"
+          height={300}
+          className="object-cover w-full h-48 rounded-lg"
         />
-        <div className="p-4">
-          <h2 className="text-xl font-medium title-font text-gray-900">
+        <div className="mt-3">
+          <h2 className="text-lg font-semibold title-font text-gray-900">
             {item?.title}
           </h2>
-          <p className="leading-relaxed mt-2 text-gray-600">
+          <p className="leading-relaxed mt-1 text-gray-600 text-xs">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus
             ipsum nec pulvinar finibus. Proin non ipsum eu dui tempor iaculis
             ultrices id velit. Donec eget accumsan ipsum. Sed ipsum dui, porta

@@ -54,7 +54,7 @@ export default function DynamicPage({ data }) {
   return (
     <div>
       <Header countCartItems={cartItems.length} />
-      <section className="text-gray-600 body-font flex justify-center w-full ">
+      <section className="text-gray-600 body-font flex justify-center w-full">
         <div className="py-16">
           <div className="flex justify-center mx-auto items-center">
             <Image
@@ -64,15 +64,14 @@ export default function DynamicPage({ data }) {
               height={500}
             />
           </div>
-
           <div className="max-w-3xl mt-6 p-8">
             <h2 className="text-sm text-gray-500 tracking-widest">
-              BRAND NAME
+              Brand Name
             </h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 inline-flex">
+            <h1 className="text-gray-900 text-lg title-font font-medium mb-1 inline-flex">
               {data.name}
             </h1>
-            <button className="w-7 h-7 text-gray-500 hover:text-red-600 ml-4">
+            <button className="w-7 h-7 text-gray-500 hover:text-red-600 ml-2">
               <svg
                 fill="currentColor"
                 strokeLinecap="round"
@@ -91,20 +90,22 @@ export default function DynamicPage({ data }) {
               changeRating={changeRating}
               numberOfStars={5}
               starDimension="20px"
-              starSpacing="5px"
+              starSpacing="0px"
               name="rating"
             />
-            <p className="leading-relaxed mt-5">{data.description}</p>
+            <p className="leading-relaxed text-sm mt-5 max-w-lg">
+              {data.description}
+            </p>
             <hr className="flex items-center border-b-2 border-gray-100 mt-5 mb-5" />
             <div className="flex">
-              <span className="title-font font-medium text-2xl text-gray-900">
+              <span className="font-medium text-2xl text-gray-900">
                 ${data.price}
               </span>
               <button
                 onClick={() => onAdd(data)}
-                className="flex ml-auto text-white bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-900 rounded"
+                className="ml-auto text-white font-medium text-sm bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-900 rounded-3xl"
               >
-                Add To Cart
+                Add to cart
               </button>
             </div>
           </div>

@@ -102,7 +102,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header countCartItems={cartItems.length} />
-      <main className="min-h-screen sm:p-8 max-w-7xl mx-auto">
+      <main className="min-h-screen sm:p-3 max-w-7xl mx-auto">
         <div>
           {/* News Feed */}
           <section>
@@ -110,9 +110,9 @@ const Home = () => {
               <h1 className="uppercase text-2xl font-bold p-3">Latest News</h1>
               <button
                 onClick={toggleFilter}
-                className="uppercase border border-gray-600 text-sm text-gray-700 px-3 h-12 rounded-lg transition duration-300 ease-in-out hover:bg-[#1F1F1F] hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="uppercase m-3 border border-gray-600 text-[10px] text-gray-700 px-2 h-8 rounded-lg transition duration-300 ease-in-out hover:bg-[#1F1F1F] hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-300"
               >
-                {filterActive ? "Show All" : "For You"}
+                {filterActive ? "Show All" : "Curated feed"}
               </button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -120,6 +120,7 @@ const Home = () => {
                 newsItems.map((item) => (
                   <div
                     key={item.id}
+                    className="w-fit items-center mx-auto"
                     onClick={() => router.push(`news/${item.id}`)}
                   >
                     <NewsWidget item={item} />

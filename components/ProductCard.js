@@ -33,13 +33,13 @@ const ProductCard = (props) => {
         ) : null}
 
         <div className="mt-3 flex flex-col items-start text-[14px]">
-          <h2 className="text-gray-900 text-start mb-1">{item?.name}</h2>
+          <h2 className="text-gray-900 text-start">{item?.name}</h2>
           <div className="mb-1">
             <StarRatings
               rating={item?.rating}
               starRatedColor="orange"
               numberOfStars={5}
-              starDimension="20px"
+              starDimension="15px"
               starSpacing="0px"
               name="rating"
             />
